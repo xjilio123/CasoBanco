@@ -24,3 +24,16 @@ dotnet ef migrations add <CambiarAqui> --context movieappauth.Data.ApplicationDb
 ## crear objetos en la base datos
 dotnet ef database update
 
+## Para modificar el login y registrar
+
+### modificar el login registra
+
+https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.SqlServer/8.0.3
+
+https://www.nuget.org/packages/Microsoft.VisualStudio.Web.CodeGeneration.Design/8.0.2
+
+## use este comando
+dotnet aspnet-codegenerator identity -dc appcomics.Data.ApplicationDbContext --files "Account.Register;Account.Login"
+
+## o use este de aqui (no ambos)
+dotnet aspnet-codegenerator identity -dc appcomics.Data.ApplicationDbContext --files "Account.Register;Account.Login;Account.Logout;Account.ForgotPassword;Account.ResetPassword"
