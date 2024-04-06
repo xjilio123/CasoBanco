@@ -37,3 +37,9 @@ dotnet aspnet-codegenerator identity -dc appcomics.Data.ApplicationDbContext --f
 
 ## o use este de aqui (no ambos)
 dotnet aspnet-codegenerator identity -dc appcomics.Data.ApplicationDbContext --files "Account.Register;Account.Login;Account.Logout;Account.ForgotPassword;Account.ResetPassword"
+
+
+## crear la migracion "Contato"
+dotnet ef migrations add ContactoMigracion --context movieappauth.Data.ApplicationDbContext -o "C:\Users\fduarte\OneDrive - Inteligo Group\Code\netcore\usmp\20241\movieappauth\Data\Migrations" 
+
+dotnet ef database update
