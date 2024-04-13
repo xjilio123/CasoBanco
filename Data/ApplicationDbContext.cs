@@ -10,5 +10,6 @@ public class ApplicationDbContext : IdentityDbContext
         : base(options)
     {}
     public DbSet<movieappauth.Models.Contacto> DataContacto {get; set; }
+    public DbSet<movieappauth.Models.Producto> DataProducto {get; set; }
 }
 
