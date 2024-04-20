@@ -48,3 +48,8 @@ dotnet ef database update
 dotnet ef migrations add ProductoMigracion --context movieappauth.Data.ApplicationDbContext -o "C:\Users\fduarte\OneDrive - Inteligo Group\Code\netcore\usmp\20241\movieappauth\Data\Migrations" 
 
 dotnet ef database update
+
+## crear la migracion "Proforma"
+dotnet ef migrations add ProformaCarritoMigracion --context movieappauth.Data.ApplicationDbContext -o "C:\Users\fduarte\OneDrive - Inteligo Group\Code\netcore\usmp\20241\movieappauth\Data\Migrations" 
+
+dotnet ef database update
