@@ -1,15 +1,13 @@
 ﻿@page
 @model RegisterModel
-@{
-    ViewData["Title"] = "Register";
-}
+
 
 <h1>@ViewData["Title"]</h1>
 
 <div class="row">
     <div class="col-md-4">
         <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
-            <h2>Create a new account.</h2>
+            <h2>REGISTRA NU NUEVA CUENTABANCARIA</h2>
             <hr />
             <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
             <div class="form-floating mb-3">
@@ -27,7 +25,26 @@
                 <label asp-for="Input.ConfirmPassword">Confirm Password</label>
                 <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
             </div>
-            <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">Register</button>
+            <div class="form-floating mb-3">
+                <input asp-for="Input.FullName" class="form-control" autocomplete="given-name" aria-required="true" placeholder="Full Name" />
+                <label asp-for="Input.FullName">Full Name</label>
+                <span asp-validation-for="Input.FullName" class="text-danger"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <select asp-for="Input.AccountType" class="form-select" aria-label="Account Type">
+                    <option value="">Select Account Type</option>
+                    <option value="Individual">Uso Personal</option>
+                    <option value="Business">Empresarial</option>
+                </select>
+                <label asp-for="Input.AccountType">Account Type</label>
+                <span asp-validation-for="Input.AccountType" class="text-danger"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="Input.InitialBalance" class="form-control" autocomplete="off" type="number" min="0" step="0.01" aria-required="true" placeholder="0.00" />
+                <label asp-for="Input.InitialBalance">Initial Balance</label>
+                <span asp-validation-for="Input.InitialBalance" class="text-danger"></span>
+            </div>
+            <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">REGISTRAR</button>
         </form>
     </div>
     
