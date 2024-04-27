@@ -31,30 +31,41 @@ namespace movieappauth.Controllers
         public IActionResult Index(string? searchString)
         {
             var productos = from o in _context.DataProducto select o;
-            if(!String.IsNullOrEmpty(searchString)){
+            if (!String.IsNullOrEmpty(searchString))
+            {
                 productos = productos.Where(s => s.Name.Contains(searchString));
             }
             productos = productos.Where(l => l.Status.Contains("A"));
             return View(productos.ToList());
         }
 
-        public async Task<IActionResult> Details(int? id){
-            Producto objProduct = await _context.DataProducto.FindAsync(id);
-            if(objProduct == null){
+        public async Task<IActionResult> Details(int? id)
+        {
+            Producto? objProduct = await _context.DataProducto.FindAsync(id);
+            if (objProduct == null)
+            {
                 return NotFound();
             }
             return View(objProduct);
         }
 
-        public async Task<IActionResult> Add(int? id){
+        public async Task<IActionResult> Add(int? id)
+        {
             var userID = _userManager.GetUserName(User);
-            if(userID == null){
+            if (userID == null)
+            {
                 ViewData["Message"] = "Por favor debe loguearse antes de agregar un producto";
                 List<Producto> productos = new List<Producto>();
-                return  View("Index",productos);
-            }else{
+                return View("Index", productos);
+            }
+            else
+            {
                 var producto = await _context.DataProducto.FindAsync(id);
-                Util.SessionExtensions.Set<Producto>(HttpContext.Session,"MiUltimoProducto", producto);
+                if (producto == null)
+                {
+                    return NotFound();
+                }
+                Util.SessionExtensions.Set<Producto>(HttpContext.Session, "MiUltimoProducto", producto);
                 Proforma proforma = new Proforma();
                 proforma.Producto = producto;
                 proforma.Precio = producto.Price;
